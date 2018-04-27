@@ -14,3 +14,28 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+Route::get("pagina",function(){
+	echo "Hola Klvst3r en Página";
+});
+
+Route::post("nuevapagina",function(){
+	echo "Hola Klvst3r en Nueva Página";
+});
+*/
+/*
+Route::get("usuario/nuevo",function(){
+	echo "Hola nuevo usuario";
+});
+*/
+/*Route::get("usuario/{nombre}",function($usuario){
+	return "Hola usuario: " . $usuario;
+});
+*/
+
+//sRoute::controller("producto","ProductoController");
+
+Route::get("pagina",function(){
+	return view("pagina.index");
+});
