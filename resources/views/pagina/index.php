@@ -5,7 +5,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<h1>Hola</h1>
+	<h1>Hola <?php echo $n; ?></h1>
 	<h2>Adios</h2>
 </body>
 </html>

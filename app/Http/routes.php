@@ -36,6 +36,15 @@ Route::get("usuario/nuevo",function(){
 
 //sRoute::controller("producto","ProductoController");
 
+/* 
 Route::get("pagina",function(){
 	return view("pagina.index");
 });
+*/
+/*
+Route::get("pagina/{numero}", function($numero){
+	return view("pagina.index")->with("n", $numero);
+});
+*/
+
+Route::controller("producto","ProductoController");
