@@ -9,6 +9,12 @@ use App\Http\Requests;
 
 class ProductoController extends Controller
 {
+    public function getIndex(){
+    	$productos = Producto::all();
+    	return $productos;
+    	return view("producto.listado");
+    }
+
     public function getCrear(){
     	return view("producto.crear");
     }
@@ -27,6 +33,6 @@ class ProductoController extends Controller
     	}
     	 
 
-    }
+    }	
     	
 }

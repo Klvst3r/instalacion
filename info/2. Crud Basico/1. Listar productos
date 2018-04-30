@@ -1,0 +1,36 @@
+Para el listado de productos, se cambian primero los tipos de campos de texto a "number" en crear.blade.php
+
+En el Controlador se utiliza el metodo getindex en ProductoController
+
+	 public function getIndex(){
+    	return view("producto.listado");
+    }
+generamos el archivo
+	views/producto/listado.blade.php
+
+
+
+@extends("producto.template")
+
+@section("contenido")
+	
+	bs3-table <tab>
+
+@endsection
+
+
+En el controlador a  traves de eloquen sacamos todos los datos y los devolvemos a un objeto $productos
+
+y en el navegador
+
+http://localhost:8000/producto/
+
+nos devolvera los datos de la bd
+
+id	1
+nombre	"Arroz"
+detalle	"Arroz graneado"
+precio	10
+cantidad	2
+created_at	"2018-04-30 23:38:30"
+updated_at	"2018-04-30 23:38:30"

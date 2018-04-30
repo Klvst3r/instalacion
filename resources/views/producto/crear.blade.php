@@ -19,11 +19,11 @@
 			</div>
 			<div class="form-group">
 				<label for="">Precio</label>
-				<input type="text" class="form-control" name="precio" id="" placeholder="Input field">
+				<input type="number" class="form-control" name="precio" id="" placeholder="Input field">
 			</div>
 			<div class="form-group">
 				<label for="">Cantidad</label>
-				<input type="text" class="form-control" name="cantidad" id="" placeholder="Input field">
+				<input type="number" class="form-control" name="cantidad" id="" placeholder="Input field">
 			</div>
 		
 		
