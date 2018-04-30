@@ -68,7 +68,7 @@ Dentro
 
 @yield 	es un apartado para todo lo que es el contenido que se vaya poniendo dentro de cada seccion, todo dentro de ese row.Agrupandose en una sección para el contenido
 
-Ahora en la vista CRear indicamos que esta vista tienda de producto.template.php
+Ahora en la vista Crear indicamos que esta vista tienda de producto.template.php
 
 @extends("producto.template")
 
@@ -83,4 +83,34 @@ Ahora necesitamos poner nuestro formulario, dentro
 
 .col-md-4
 	bs3-form
+
+
+colocando los campos del formulario respectivos, en el submit del form
+colocamos:
+	Enviamos una url de la funcion de blade a producto que es la ruta principal / crear 
+
+	<form action="{{ url('producto/crear') }}" method="POST" role="form">
+
+y para evitar consultas de hacker, hacemos una validacion csrf
+
+	{{ csrf_field() }}	
+
+
+En el formulario enviamos los datos y al generar el post form
+
+nos dara una salida como la que a continuacion se muestra
+
+_token	"PAJaajhKXnO3z77dFNfoIchtElfhbN42vGypKKk3"
+nombre	"Arroz"
+detalle	"Arroz graneado"
+precio	"10"
+cantidad	"2"
+
+
+Devuelve arros .
+
+En la ruta
+Request all simplemente es una funcion del reuqest que recibe todos los datos enviados.
+
+Ahora vamos a recibir todo de un nuevo producto a traves de eloquent
 
