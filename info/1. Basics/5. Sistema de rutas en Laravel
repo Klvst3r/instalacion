@@ -1,0 +1,98 @@
+Las rutas en Laravel son configuraciones simples que realizamos y que hacen que una peticion hecha dfen el navegador sea:
+GET
+POST
+PUT
+DELETE
+UPDATE
+
+y llegue a la aplicacion. Las rutas dentro de la aplicacion la encontraremos dentro de la carpeta "app/Http/routes.php"
+
+
+Por defecto tiene un aruta que retorna una vista llamada welcome
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+Para encender nuestra aplicacion en el servidor para ello utilizamos
+
+php artisan server
+
+con la ruta que tenemos indicada
+
+en nuestro caso tenemos funcionando a tarves de host virtuales
+
+en el browser:
+
+code.laravel/
+
+Como ejemplo
+
+http://code.laravel/pagina
+
+Nos generaria un mensaje de error para poder rutearla
+
+Para rutearla es desntro de las rutas crear una ruta similar a la indicada
+
+dentro de routes.php
+
+Route::get
+
+Get por que la mayoria de las peticiones las hacemos por este metodo, al escribir algo en la url se hace una consulta con el metodo GET
+
+A manera de ejmplo ponremos la siguiente ruta:
+
+Route::get("pagina",function(){
+	echo "Hola Klvst3r";
+});
+
+
+Aunque existen varios tiposd e peticiones que se pueden hacer en la ruta por ejemplo.
+
+Otro tipo de peticion es
+
+
+Route::post('pagina',function(){
+	echo "Hola Klvst3r en nueva pagina ";
+});
+
+
+solo es para metodos que vienen desde un formulario, tambien podemos generar rutas separadas por barras
+
+
+Ej.
+
+Rutas separadas con barra
+Podemos hacer tambien de uso de rutas separadas por barras
+
+Ej
+
+Route::get('usuario/nuevo',function(){
+	echo "Hola nuevo usuario";
+});
+
+
+
+Parametros en la rutas
+
+Con laravel podemos hacer tambien, pasar parametros en las rutas
+
+Ej.
+
+Route::get('usuario/{nombre}',function($usuario){
+	echo "Hola: " . $usuario ;
+});
+
+En el navehador
+http://code.laravel/usuario/Klvst3r
+
+Hola: Klvst3r
+
+Con esto Laravel puede recuperar todo lo que indiquemos como parametro como un patron en la url de la ruta. pasando directamente el parametro dentro del clousure.
+
+Para la impresión puede ser tambien mediante un return:
+
+return "Hola: " . $usuario;
+
+Por que esta peticion esta repondiendo directamente a la peticion.

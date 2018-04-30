@@ -1,0 +1,125 @@
+comandos Generales en el Proyecto.
+
+Pasos Para un Pryecto en Comandos
+
+1. Configurando la Conexion con la BD
+
+Se puede hacer a traves del archivo .env de laravel
+
+Cuando tenemos la necesidad de configurar opciones mas avanzadas ahi si tocaremos la carpeta config
+Si se quiere configurar formato de fecha y hora sera en
+config/app.php
+
+Las configurarciones comunes seran dentro del archivo de entorno '.env'
+
+Configuramos la BD para Laravel
+
+Esta informacion la modificamos en el archivo de entorno quedando
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=code-laravel
+DB_USERNAME=dev
+DB_PASSWORD=desarrollo
+
+2. Migrations en:
+  database / migrations
+
+  Generar una migración con Artisan de Laravel
+  $ php artisan make:migration <migration_name>
+  Ej.
+  $ php artisan make:migration create_productos_table
+
+3. Colocando campos a la tabla de migraciones
+  Ej. con los metodos up() y down()
+
+-----------------------  Code  ----------------------------------
+  public function up()
+  {
+      Schema::create('productos', function (Blueprint $table) {
+          $table->increments('id');
+          $table->string("nombre",50);
+          $table->text("detalle");
+          $table->double("precio");
+          $table->integer("cantidad");
+          //$table->primary("id"); //Esto se elimina para no redundar codigo ya que al poner increments id lo cambia a clave rimaria automaticamente
+          $table->timestamps();
+
+      });
+  }
+
+El segundo metodo queda
+
+public function down()
+  {
+      Schema::dropIfExists('productos');
+  }
+
+  -----------------------  Code  ----------------------------------
+
+4. Ejecutar la Migración
+Ejecutar migración
+
+php artisan migrate
+
+
+5. Generando El modelo en
+
+    App/
+
+    php artisan make:model <Nombre:modelo_en_Singular>
+
+    $ php artisan make:model Producto
+    Model created successfully.
+
+    Ahora abrir el Modelo
+
+    Ej. Producto Para colocar la configuración de que tabla va a usar
+
+    A traves de la variable o metodo el nombre de la tablaa que va a utilizar
+
+  -----------------------  Code  ----------------------------------
+    class Producto extends Model
+    {
+        protected $table = "productos";
+    }
+  -----------------------  Code  ----------------------------------
+
+  Con eso asociamos esta tabla a ese modelo directamente
+
+Se puede generar el modelo y su migracion
+
+Queremos generar la migracion y queremos generar directamente el modelo y su migracion.
+
+con.
+
+Para ello generaremos un modelo que se llame "Categoria" y  que se cree migracion que se llame "categorias"
+
+Hacemos
+
+php artisan make:model Categoria -m
+
+-m Le dira a laravel que cree la migracion tambien a la vez que vamos generando el modelo.
+
+6. Preparar Rutas
+  En el "app/routes.php"
+
+7. Generar Controlador
+  En la terminal utilizamos una notacion Pascal
+
+  Iniciando Con Mayuscula y la siguiente palabra iniciar con Mayuscula
+
+  php artisan make:controller ProductoController
+
+8. Enrutar el controlador o hacer que nos devuelva algo
+  En app/routes.php
+
+    Route::resource("producto", "ProductoController");
+
+9. Manejando Vistas
+
+  En el archivo de rutas, enrutar vista
+
+  Route::get('pagina/{numero}',function($numero){
+  	return view("pagina.index")->with("n", $numero);
+  });

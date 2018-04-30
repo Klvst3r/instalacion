@@ -1,0 +1,93 @@
+2. Migraciones
+
+Las migraciones en Laravel son pequeños troceos de codigo PHP que permiten cambiar la estrutura y contendio de la BD, dentro del proyecto se encuentran en:
+database / migrations
+
+Dentro se almacenaran todos los archivos de migraciones que se guardan con una fecha y un estampado de hora y tiempo para que se ejecuten en un orden correcto, asi por ejemlo si tenemos una migracion de ahora, Laravel guarda un regisro de las cosas que ha creado y migrado de las ejecuciones y solo hara uso de la ultima migración que ya se ha creado.
+
+Laravel permite tener actualizado si se esta en un equipo de trabajo.
+
+El registro de Laravel se ira viendo cuales se han ejecutado y cuales estan por crearse y de distintas formas se puede hacer un rollback para proceder en el tiempo y hacer eliminaciones de las cosas que no queremos.
+
+Dentro de migrations
+
+abrimos un ejemplo
+2014_10_12_000000_create_users_table.php
+
+Lo que se ve es un sistema de autentificacion de usuarios Laravel tiene una estrutura de una migración. que es la siguiente
+
+Una clase {
+	//Dos metodos importantes
+	//Se pueden agregar y siempre que se agregen
+
+	metodo up(){
+		//Crear una tabla Usuarios
+		//Al ejecutar esta tabla
+	}
+
+	metodo down()
+	{
+		//Es un schema con el nombre de la tabla para cuando quiera eliminarse información hacer un rollback para eliminar cosas que no nos interesan
+		//o volvemos el metodo para vlver a ejecutar el metodo up()
+	}
+
+}
+
+Laravel genera automaticamente el script por medio de artisan.
+
+2. Generar una migración con Artisan de LAravel
+
+Sacamos la terminal y posicionando en la carpeta raiz del proyecto
+
+code-laravel
+
+php artisan
+
+Crearemos un nuevo archivo de migracion
+
+Encontramos la categoria migrate y make
+
+Para crear todo tipo de cosas con artisan es en la categoria
+make: migration
+
+Crear un nuevo archivo de migraciṕon
+
+En linea de comandos
+
+php artisan make:migration <nombre de la migracion>
+
+create_nombreTabla_table
+
+php artisan make:migration create_productos_table
+
+ Con esto generara un archivo con time stamp y dentro los metodos up y down para las migraciones de productos
+
+ Tal como
+
+ 2018_04_23_170609_create_productos_table.php
+
+ Hacemos doble click con todo el codigo internamente
+
+ class CreateProductosTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        //
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
+    }
+
+Con esro podremos ya trabajar con las migraciones		

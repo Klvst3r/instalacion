@@ -1,0 +1,86 @@
+Crear un producto
+
+Paa hacer un crud completo
+
+En primer lugar en la carpeta
+
+app/Http/routes
+
+1. Hacer el ruteo completo del controlador ProductoConroller
+
+
+
+
+Route::controller("producto","roductoController");
+
+
+Parametros
+1. Ruta en la que va a estar el producto: "producto"
+2. EL nombre del controlador: "ProductoController"
+
+Esta es la ruta o la peticion la que se hara la peticion en el navegador y lanzaraa ProductoController y sera un Controllador Restfull que respondera con todas sus aciones que tenga internamente.
+
+
+
+2. Ir al Controlador y generar las funciones para poder crear en: 
+
+	ProductoController
+
+----------------- Code -----------------------
+public function getCrear(){
+    	return view("");
+    }
+
+----------------- Code -----------------------	
+
+Crear nos retornara una vista de la carpeta reosurce /vistas
+
+ahi creamos una nueva carpeta "producto", que contendra dos archivos:
+
+/resources/views/producto
+				crear.blade.php
+				template.blade.php
+
+Escribimos en la vista del controlador				
+----------------- Code -----------------------
+public function getCrear(){
+    	return view("producto.crear");
+    }
+
+----------------- Code -----------------------	
+
+Escribimos la carpeta que contiene a nuestro archivo de vistas, mencionando a la vista que es "crear"
+
+
+3. Ahora a trabajar con la vista se genera un template 
+
+template.blade.php
+
+al usar una libreria de bootstrap
+
+bs3template:html5
+
+
+Dentro 
+.container
+	.row
+		@yield("contenido")
+
+@yield 	es un apartado para todo lo que es el contenido que se vaya poniendo dentro de cada seccion, todo dentro de ese row.Agrupandose en una sección para el contenido
+
+Ahora en la vista CRear indicamos que esta vista tienda de producto.template.php
+
+@extends("producto.template")
+
+Por medio de @section("contenido")
+Se agrupara en la seccion contenido generada 
+
+@endsection
+Con esto abrimos la tabla seccion correctamente 
+
+
+Ahora necesitamos poner nuestro formulario, dentro
+
+.col-md-4
+	bs3-form
+

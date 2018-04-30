@@ -1,0 +1,311 @@
+Application key [base64:8EIG1yQjt/LgqDhenQTj7Qw2FO4KrYVftSma/UnVxzE=] set successfully.
+klvst3r:/var/www/html/dev/code-laravel$ composer create-project --prefer-dist laravel/laravel
+
+
+Application key [base64:vzPyvhWBoCMnmequl1G9dnTroMxBrHLoy1reMzZWr9k=] set successfully.
+klvst3r:/var/www/html/dev$ composer create-project laravel/laravel code-laravel
+
+
+
+
+echo "# code-laravel" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:Klvst3r/code-laravel.git
+git push -u origin master
+
+
+
+
+Paso para rabajar con Laravel y Github
+
+1. Colocarse en la carpeta local de desarrollo que contendra al proyecto de Larvel ej. "dev"
+	cd /dev
+
+2. Crear el proytecto con Laravel desde Local
+	klvst3r:/var/www/html/dev$ composer create-project laravel/laravel code-laravel
+	Application key [base64:vzPyvhWBoCMnmequl1G9dnTroMxBrHLoy1reMzZWr9k=] set successfully.
+
+3. Crear en Github el repositorio con el mismo nombre de nuestro proyecto
+	git@github.com:Klvst3r/code-laravel.git
+	Nombre del Repo: 	code-laravel
+
+4. Desde local inicializar el repositorio
+	git init
+
+5. Agregar contenido al stage area
+	git add .
+
+6. Commit local
+	git commit -m "Begining Project"	
+
+7. Agregar el repositorio origin a master
+	git remote add origin git@github.com:Klvst3r/code-laravel.git
+
+8. Subir contenido al repositorio
+	git push -u origin master
+
+9. Abrir el archivo .env para visualizar configuración base
+	subl .env	
+
+	APP_KEY=base64:vzPyvhWBoCMnmequl1G9dnTroMxBrHLoy1reMzZWr9k=
+
+10 Referencias
+	https://github.com/gorkaeff/escudosfutbol
+	https://parzibyte.me/blog/2017/05/29/hacer-despues-clonar-proyecto-laravel/
+	https://styde.net/configuracion-de-git-en-proyectos-de-laravel/
+	https://victorroblesweb.es/2015/05/20/instalar-laravel-5/
+	https://devcode.la/tutoriales/laravel-5-nuestro-primer-proyecto/
+	https://evelb.es/blog/tutorial-laravel-primeros-pasos/
+	https://victorroblesweb.es/2015/05/20/instalar-laravel-5/
+
+	Oficial
+	https://laravel.com/docs/5.6
+
+
+Curso Laravel
+
+https://devcode.la/tutoriales/laravel-entorno-de-desarrollo/
+https://devcode.la/tutoriales/laravel-5-nuestro-primer-proyecto/
+		
+
+
+Project in Github
+https://www.adictosaltrabajo.com/tutoriales/github-first-steps-upload-project/
+https://desarrolloweb.com/articulos/crear-repositorio-git-codigo.html
+https://entredesarrolladores.com/3936/como-subir-proyecto-ya-hecho-a-github
+
+
+
+Estructura de Laravel
+
+Model - View - Controller y +
+
+
+					  (Ruta)  <----->  (Petición)<---> (Salida en pantalla)
+						^								 ^	
+						|								 |
+						v								 |
+			 ----->(Controlador) <-------   -------------|
+			 |							|	|
+			 v 							v   v
+BD <--> (Modelo)						(Vista)
+
+Utiliza una estructura multicapa a partir de la estructura básica
+
+Modelo. Se basan en elementos del undo real, como una persona, producto, mascota o video.
+Ej. Si se contruye un blog, los pobibles Modelos serian (Post, etiqueta Comentario).
+
+La CapaVista es la responsable de generar la interfaz de usuario es la capata que es más cerca de la pantalla del usuario. Es la que muestre del lado del cliente.
+
+Ej. Una tienda en linea tendra una lista de productos que se mostraran en pantalla, esta lista sera accesible de la tabla productos o el modelo, y la parte intermedia entre el modelo y la vista se encuentra el controlador.
+
+El Controlador, es un coordinador que proporciona el enlace entre la vista y el modelo, esta capa es la reponsable del procesamiento de datos y actua sobre el modelo, decide que accion debe llevarse a cabo.
+
+La presnetación de una vista o redirigir a otra pagina.
+
+En el blog el controlador puede ver los comentarios mas recientes de un post haciendo uso del modelo y pasarlos a la vista para la presentacion.
+
+Finalmente la ruta o el sistema de rutas no forma parte del ecosistema MVC pero si de la estructra de Laravel, tiene la funcionalidad de redireccionar todas las peticiones que hagamos en el navegador hacia un controlador.
+
+
+Estructura de Carpeta de Laravel.
+
+Las herramientas para poder trabajar correctamente con laravel son 
+Sublime Text y PHP Storm
+
+www.jetbrains.com/phpstorm
+
+Se abre la estructura del proyecto
+
+La Estructura de nuestro proyecto es:
+
+
+ * code-laravel
+ |
+ |->app
+ |->boostrap
+ |->config
+ |->database
+ |->public
+ |->resources
+ |->routes
+ |->storage
+ |->test
+ |->vendor
+ 	.env
+ 	.env.example
+ 	.gitattributes
+ 	.gitignore
+ 	README.md
+ 	artisan
+ 	composer.json
+ 	composer.lock
+ 	package.json
+ 	phpunit.xml
+ 	readme.md
+ 	server.php
+ 	webpack.mix.js
+
+- app 	
+	Es la capeta que lleva la mayor parte de codigo backend, aqui se encontraran los modelos, los controladores, las rutas entre otras validaciones del lado del servidor. 
+
+	Los controladore seran dentro de esta carpeta en la version se actualizo todo y tiene una organizacion diferente.
+	Modelos y view tambien estaba aca.
+	Los modelos vienen dentro de esta carpeta. y los controladores dentro de Http\Controllers
+
+
+	Las ruta seran las que manejen los controladores y todo lo que salga en las vista de Laravel.
+
+	
+- Config	
+	Otra carpeta importante es config que se utilizara al inicio de la aplicación,
+
+	En esta carpeta estan los archivos de configuración.
+
+	Para configurar la aplicación se necesita bg o produccion. Configuración de aplicación, modo debg o modo produccion.
+	Configurar autentificaciones, que tabla de autentificacion se usara, la cache que bd se utilizara
+	Configuración el envio de correos
+	Sessiones.
+
+-Database
+	Se utiliza al principio de la aplicacion y a medida que que se va desarrollando, permite tener conexion directa con la BD del proyecto, Pej.
+	Las migraciones son pequeños archivos  a manera de clases que se generan pensada a manera de clases y objetos y poder generar una estructura de la tabla final a la BD.
+	En las migraciones se crearan una estructira por dmedio de objetos la cual  ala hora de ejecutar un comando todo se migrara y se convertira en una tabla en la BD.
+
+	Factories.
+		Son pequeñas clase que permitiran o llenar datos de prueba en la BD
+	seeds
+		Son tambien pequeñas clases que permiten enviar datos de prueba hacia nuestra BD por medio de conjuntos o arays en el navegador que se van creando.
+
+- Pubvlic
+	Es la unica carpeta que estara en el lado del cliente, es la unica con la que el usuario, fina interpretara.
+	Aca habla archivos CSS, JS, Fotos, musica ideis entre otro y se entra addeso por medio del navegador.
+	Los index,html o index.php
+
+	No se encuentra aca el index.php de Laravel pueto que esto se comienza a leer  patir de la carpeta public.
+
+Para las Visas; Laravle las agrupa dentro de la carpeta resources, encotnraresmos 
+- resources
+	assets
+	lang	Son validaciones de paginación,
+	views 	Es la carpeta donde se estaran almacenando las vistas del poyecto, que es lo que llegara a la pantalla del usuario
+
+- Vendor
+	Es una carpeta donde se guardan todas las dependencia que usa Laravel.
+	Esta carpeta tambien es util para los paquetes de composer.
+		Cuando tengamo composer y que a traves de determinadas paquetes, es instalar sobre la carpeta vendor y ya ahi estara disponible de Laravel.
+
+
+
+
+Inicar Laravel en el navegador
+--------------------------------
+Para iniciar Laravel en el navegador tenemos dos formas comunes
+
+1. La primer forma es por medio de "artisan" que es la linea de comandos por excelencia de Laravel 
+Para sacar la linea de comandos en Sublime Text en view / Show Console (Ctrl + ')
+
+Abriendo la ruta para ejecutar los comandos desde nuestro editor.
+
+2. La otra forma es desde la linea de comandos de nuestra erminal
+	desde terminal
+	en la raiz de nuestro poyecto
+	entraremos en nuestro directorio
+	cd code-laravel
+
+	Dentro de la carpeta del prroyecto escribimos:
+
+	php artisan 
+
+	Si todo es correcto desplegara los comandos que tiene artisan para poder ejecutarlo
+
+3. 
+   
+Poner en marcha Laravel y un entorno de trabajoen Sublime Text
+https://buclefor.wordpress.com/2017/12/05/poner-en-marcha-laravel-en-windows/
+
+
+
+Uso de Linea de Comandos con Artisan desde Sublime Text
+https://packagecontrol.io/packages/Laravel%205%20Artisan
+
+https://packagecontrol.io/packages/Laravel%205%20Artisan
+
+
+https://codigofacilito.com/videos/12-curso-laravel-instalacion-de-paquetes-con-composer
+
+
+
+https://www.youtube.com/watch?v=6maic59OY8E
+
+
+https://packagecontrol.io/packages/Laravel%205%20Artisan	
+
+	
+
+4. 	Desde las herramientas instaladas con Sublime Text
+	Ctrl + Shift + P
+
+	Escribir
+		Make: Controller
+
+	Nos solicitara el nombre dle controlador:
+	ej.
+
+	DemoController
+
+	Listo Artisan nos creara el controlador de Laravel desde Artisan con Sublie Text
+
+
+
+5. El siguiente comando a utilizar Para iniciar el servidor de pruebas 
+	serve
+
+	Inicia un servidor de aplicacion para ejecutar todo lo que es laravel dentro de ese dominio que tendremos
+
+	Desde Terminal
+
+	php artisan serve
+
+	saldra la url donde estara alojado el proyecto de laravel
+
+
+	En nuestro caso tenemos un host virtual con el nombre
+
+	code.laravel que levantara nuestros servicios de laravel
+
+	localmente esta en 
+
+		/var/www/html/dev/code-laravel/
+
+	Dsde el navegador
+
+		localhost/dev/code-laravel
+
+	Estas son las formas que tenemos para tener encendido nuestro servidor de Laravel.
+
+	El puerto por defecto es el puerto 80
+
+
+	En el navegador tenemos 
+
+	localhost:93
+
+	y con htdocs
+
+	Laravel corre dentro de la carpeta public
+
+	localhost/dev/code-laravel/public
+
+	Tenemos el mismo resultado generado por Artisan
+
+	
+
+
+
+
+
+
+

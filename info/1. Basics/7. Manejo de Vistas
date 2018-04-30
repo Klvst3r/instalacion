@@ -1,0 +1,106 @@
+7. Manejo de Vistas
+
+Existen dos formas de genetrar vistas en laravel
+
+Las vistas tienen un uso practico de estas, las vistas en laravel se encuentran dentro de la carpeta resources views y ahi estan todas las vistas que se utilizaran
+
+
+Ruta de las vistas
+
+resources/views
+
+1. La forma PHP
+
+
+2. La forma hecha con Blade
+Blade es el gestor de plantillas que maneja Laravel
+
+Cuando estemos con Blade lo unico que hay que hacer es colocarle el nombre del archivo.
+ejemplo
+ejemplo.blade.php
+
+Cuando estemos con PHP
+
+Solo sera .php
+
+ejemplo.php
+
+Para hacer un ejemplo tenemos que tener un controlador o en todo caso una ruta lista para poder lanzar esa vista.
+
+Con las rutas
+
+app/routes.php
+
+Ej con la ruta "pagina" nos devolvera una vista
+
+En el archiv routes le indicamos
+
+web.php
+
+Apuntando a resources/views/pagina/index.php
+
+con sodigo basico html5
+
+
+Route::get('pagina',function(){
+	return view("pagina.index");
+});
+
+
+Automaticamente laravel sacara el archivo que queremos sacar en pantalla, y lo retornara para poder visualizarla
+
+En el navegador:
+
+pagina
+
+http://code.laravel/pagina
+
+Miostrara el titulo esperado.
+
+Esto ya se lee desde la vista
+
+
+Si se quiere hacr algo practico vamos al archivo index.php y ponemos,
+
+Esta es la forma generada por PHP-
+En algunos casos queremos mostrar datos en esta vista, lo que debemos hacer es pasarle parametros a esa ruta pagina
+
+Route::get('pagina/{numero}',function($numero){
+	return view("pagina.index")->with("n", $numero);
+});
+
+
+Esto pasara un parametro numero de pagina psarle el parametro a la vista debemos hacer
+
+colocarle un parametro de manera que pueda ser reconocida en la vista final y el valor de esa variable "numero", reconocida con "n"
+
+En la vista la reconoceremos con la letra "n".
+
+En la vista:
+
+
+Vista:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Hola <?php echo $n; ?></h1>
+	<h2>Hola</h2>
+</body>
+</html>
+
+
+Ruta:
+Route::get('pagina/{numero}',function($numero){
+	return view("pagina.index")->with("n", $numero);
+});
+
+Parametro
+http://code.laravel/pagina/Klvst3r
+http://code.laravel/pagina/1
+
+Hola Klvst3r
+Hola 1

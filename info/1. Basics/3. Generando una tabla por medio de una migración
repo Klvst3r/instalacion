@@ -1,0 +1,85 @@
+3. Generando una tabla por medio de una migración
+
+Crear una tabla con migración
+
+Para generar una tabla por medio de una migración es colocar el codigo dentro del metodo up()
+
+Primero colocamos el codigo usando la clase schema para instanciar el objeto y poder generar los campos de la tabla.
+
+Por medio de schema invoc amos el metodo create el nombre de la tabla y como segundo parametro es un clousure
+que tiene los parametros necesarios
+
+
+print table para generar la estructura de la tabla
+
+quendando:
+
+Las columnas por el metodo table, y colocamos los metodos.
+
+Tienen metodos para generar diferentes tipos de colmnas.
+Lo podemos constatar en la pagina de Laravel de acuerdo a la versión 5.6 buscando la seccion Database
+
+
+https://laravel.com/docs/5.2/migrations#creating-columns
+Ahi estaran todos los metodos necesarios para crear columnas de nuestra tabla
+
+
+
+    public function up()
+    {
+        Schema::create('productos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string("nombre",50);
+            $table->text("detalle");
+            $table->double("precio");
+            $table->integer("cantidad");
+            //$table->primary("id"); //Esto se elimina para no redundar codigo ya que al poner increments id lo cambia a clave rimaria automaticamente
+            $table->timestamps();
+
+        });
+    }
+
+El segundo metodo queda
+
+public function down()
+    {
+        Schema::dropIfExists('productos');
+    }
+
+
+Ejecutar migración
+
+php artisan migrate
+
+Artisan generara todas las migraciones que se iran convirtiendo en tablas.
+
+Migration table created successfully.
+Migrated: 2014_10_12_000000_create_users_table
+Migrated: 2014_10_12_100000_create_password_resets_table
+Migrated: 2018_04_23_170609_create_productos_table
+
+
+Para comprobamos lo revisamos en la s tablas de la bd  donde verificamos que se crea la tabla con la estructura creada
+
+
+Se crean 4 tablas
+migrations
+password_reset
+productos
+users
+
+
+ 	# 	Name 	Type 	Collation 	Attributes 	Null 	Default 	Extra 	Action
+	1 	idPrimary 	int(10) 		UNSIGNED 	No 	None 	AUTO_INCREMENT 	Change Change 	Drop Drop
+
+	2 	nombre 	varchar(50) 	utf8mb4_unicode_ci 		No 	None 		Change Change 	Drop Drop
+
+	3 	detalle 	text 	utf8mb4_unicode_ci 		No 	None 		Change Change 	Drop Drop
+
+	4 	precio 	double 			No 	None 		Change Change 	Drop Drop
+
+	5 	cantidad 	int(11) 			No 	None 		Change Change 	Drop Drop
+
+	6 	created_at 	timestamp 			Yes 	NULL 		Change Change 	Drop Drop
+
+	7 	updated_at 	timestamp 			Yes 	NULL 		Change Change 	Drop Drop

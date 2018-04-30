@@ -1,0 +1,107 @@
+4. Modelos en Laravel
+
+Los modelos en Laravel son objetos que representan a las entidades o modelos de negocios de nuestra aplicacion.
+
+Por ejemplo tenemos un objeto libro en Laravel que sera un modelo libro, que finalmente es una clase en Laravel que hace referencia a un modelo o entidad.
+
+Los modelos en la estructura de carpetas, se encuentra dentro de app y el ejemplo por defecto es user.php
+
+app/User.php
+
+Un modelo en Laravel se encuentyra directamente relacionado con una tabla pero en algunos cosas sirve para obtener servicios u otras cosas mas.
+
+Aunque se vera que un modelo se encuenyra automaticamente asociado a una tabla de la Bd o a una entidad en este caso tenemos la tabla Users y si vemos nuestroas tablas de la bd, por defecto que han generado , corroboramos que hay uta tabla User, que es la que se vincula automaticamente a este modelo.
+
+
+Laravel automaticamente genera la relacion convirtiendo el nombre a minuscula del nombre del modelo o nombre de la clase en minuscola y haciendolo polural. Por medio de su codigo.
+
+ste modelo esta directamente relacionada a la tabla que existe en la bd.
+
+}Crear un modelo
+
+Para generar un modelo crearemos con el codigo de ejemplo de User.php
+
+
+Para generar el modelo por medio de artisan
+
+php artisan make:model
+
+
+EL modelo de Laravel extiende de elocuent
+
+Elocuent es el ORM de Laravel que permite hacer consultas directamente a la base de datos por medio del modelo sin necesidad de utiliza consultas SQL.
+
+Sino que en lugar de ello se utilizan consultas por medio de objetos, sin necesidad de tuilizar SQL, Por ello es necesario crear el modelo por medio de la clase Elocuent
+
+Genarando Modelo
+
+
+php artisan make:model <Nombre:modelo_en_Singular>
+
+Entonces:
+
+php artisan make:model Producto
+
+La tabla esta en pluar y en minuscula, con ello automaticamente se crea el modelo
+
+Dentro de la carpeta "app"
+
+Dentro de nuestro modelo solo colocaremos la configuración de que tabla va a usar.
+
+app/Producto.php
+
+
+Como se trabajara con español
+
+La configuracion corecta es por medio de la variable de configuracion o propiedad del modelo que estamos generando ponerle el nombre de la tabala  utilizar
+
+protected $table = "productos"
+
+Con ello estamos asociando esa tabla con el modelo de negocio
+
+Esae toda la configuracion que se hace al generar el modelo y en estos casos
+
+Queremos generar la migracion y queremos generar directamente el modelo y su migracion.
+
+con.
+
+Para ello generaremos un modelo que se llame "Categoria" y  que se cree migracion que se llame "categorias"
+
+Hacemos
+
+php artisan make:model Categoria -m
+
+-m Le dira a laravel que cree la migracion tambien a la vez que vamos generando el modelo.
+
+Model created successfully.
+Created Migration: 2018_04_24_175403_create_categorias_table
+
+
+La estructura de modelo queda:
+
+    public function up()
+    {
+        Schema::create('categorias', function (Blueprint $table) {
+            $table->incremen ts('id');
+            $table->string("nombre");
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('categorias');
+    }
+
+
+
+Ejecutamos la migracion de esta tabla a la bd
+
+php artisan migrate
+
+Terminando la mogracion con el timestapm de creacion de nuestra tabla

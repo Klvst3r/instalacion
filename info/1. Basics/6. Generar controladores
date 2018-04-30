@@ -1,0 +1,48 @@
+6. Generar controladores
+
+El controlador es una clase usada para trabajar la logica de las rutas, el controlador normalmenete, contendra un numero de metodos publicos llamadas acciones.
+
+Se pueden pensar esas acciones como la alternativa a los clousures que se han usado en las rutas.
+
+En el script de las ruptas estaban generadondo peticiones y se retornaba dentro de clousures, pero en ocaciones ya cuando se esten realizando un conjunto de rutas como los cruds o algo mas complejo, esto se sobre carga un solo archivo. Ahi es donde entran los controladores.
+
+Para ya no estar agrupando, se utuilizan sino que todas las rutas generadas y especificas.
+
+Manejara un conjunto de rutas como por ejeplo un crud de productos van a manejar un controlador especifico y solo se va a rutear eso controlador especifico con una ruta, un apeticion.
+
+1. Crear el controlador. (Ubicacion de Controladores)
+Lo primero es crear un controlador para luego rutearlo.
+Los controadores e ubucan en la carpeta app/Http/Controllers
+
+Se crean por medio de artisan
+En la terminal utilizamos una notacion Pascal
+
+Iniciando Con Mayuscula y la siguiente palabra iniciar con Mayuscula
+
+php artisan make:controller ProductoController
+
+Controller created successfully.
+
+Automaticamente se tiene generado el primer controlador.
+
+Viene vacio por defecto.
+
+
+
+
+Enrutar el controlador.
+
+Lo que debe de realizarse ahora es enrutar el controlador para hacer que nos devuelva algo este controlador con el archivo de las rutas.
+
+app/routes.php
+
+
+Route::controller("producto", "ProductoController");
+
+Con esto ya se ha ruteado el controlador y por medio de sus metodos internos hariamos un ruteo especifico a cada  instancia o accion que maneje ese controlador
+
+En el navegador colocar el controlador de las rutas
+
+el metodo controller ha quedado desfasado por lo que utilizaremos su actualizacon con "resources"
+
+Route::resource("producto", "ProductoController");

@@ -1,0 +1,43 @@
+Para iniciar con un proyecto debemos configurarlo de inicio dentro de la carpeta 
+conf
+
+Se puede hacer a traves del archivo .env de laravel
+.nv Enviroment o Entorno que trae as configuraciones mas importantes para el proyecto
+La configuraion de la aplicación
+el debug
+el entorno
+las conexiones a bd
+los puertos
+el usuario y pass de la bd
+sesiones
+configuracion para el correo
+
+Cuando tenemos la necesidad de configurar opciones mas avanzadas ahi si tocaremos la carpeta config
+Si se quiere configurar formato de fecha y hora sera
+en
+config/app.php
+
+Buscando el Time Zone
+'timezone' => 'Americo/Mexico',
+
+Las configurarciones comunes seran dentro del archivo de entorno '.env'
+
+Configuramos la BD para Laravel
+
+Creamos la BD code-laravel
+
+Usuario = dev
+Password = desarrollo
+
+Esta informacion la modificamos en el archivo de entorno
+
+quedando
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=code-laravel
+DB_USERNAME=dev
+DB_PASSWORD=desarrollo
+
+
+
