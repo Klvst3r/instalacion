@@ -11,8 +11,10 @@ class ProductoController extends Controller
 {
     public function getIndex(){
     	$productos = Producto::all();
-    	return $productos;
-    	return view("producto.listado");
+    	//return $productos;
+    	return view("producto.listado")->with(array(
+    			"productos"=>$productos
+    		));
     }
 
     public function getCrear(){
@@ -29,7 +31,8 @@ class ProductoController extends Controller
     	$producto->cantidad = $request->input("cantidad");
 
     	if($producto->save()){
-    		return "ok";
+    		//return "ok";
+    		return redirect()->to("producto");
     	}
     	 
 
