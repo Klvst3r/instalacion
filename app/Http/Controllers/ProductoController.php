@@ -24,7 +24,13 @@ class ProductoController extends Controller
     public function postCrearnuevo(Request $request){
     	//return $request->all();
     	
-    	$producto = new Producto();
+    	if($request->has("id")){
+    		$producto = Producto::find($request->input("id"));
+    	}else{
+    		$producto = new Producto();	 
+    	}
+    	
+    	
     	$producto->nombre = $request->input("nombre");
     	$producto->detalle = $request->input("detalle");
     	$producto->precio = $request->input("precio");
@@ -37,6 +43,15 @@ class ProductoController extends Controller
     	 
 
     }	
+
+    public function getActualizar($id){
+    	$producto = Producto::find($id);
+    	if($producto){
+    		return view("producto.crear")->with("producto",$producto);
+    	}
+
+    	return redirect()->back();
+    }
 
     public function getEliminar($id){
     	$producto = Producto::find($id);
