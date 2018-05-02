@@ -1,0 +1,18 @@
+1. En Producto Controller se crea el motodo para borrar el registro de la Bd mediante el ID
+
+public function getEliminar($id){
++    	$producto = Producto::find($id);
++    	if($producto){
++    		$producto->delete();
++    	}
++
++    	return redirect()->back();
++    }
+
+
+2. En la Vista "listado.blade.php"
+
+Se agrega la referencia por medio de la URL
+	<a href="{{ action('ProductoController@getEliminar', array("id"=>$producto->id)) }}" class="btn btn-sm btn-danger">Eliminar</a>
+
+	
