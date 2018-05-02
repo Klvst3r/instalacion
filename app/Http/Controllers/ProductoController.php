@@ -37,5 +37,14 @@ class ProductoController extends Controller
     	 
 
     }	
+
+    public function getEliminar($id){
+    	$producto = Producto::find($id);
+    	if($producto){
+    		$producto->delete();
+    	}
+
+    	return redirect()->back();
+    }
     	
 }

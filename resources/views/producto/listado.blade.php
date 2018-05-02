@@ -26,7 +26,7 @@
 						<td>{{ $producto->cantidad }}</td>
 						<td>{{ $producto->precio }}</td>
 						<td>
-							<a href="" class="btn btn-sm btn-danger">Eliminar</a>
+							<a href="{{ action('ProductoController@getEliminar', array("id"=>$producto->id)) }}" class="btn btn-sm btn-danger">Eliminar</a>
 							<a href="" class="btn btn-sm btn-default">Actualizar</a>
 						</td>
 					</tr>
